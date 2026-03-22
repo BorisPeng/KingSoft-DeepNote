@@ -24,3 +24,39 @@
 ```bash
 # 进入项目目录
 pip install flask flask-cors requests
+
+### 3. 项目结构说明
+
+```text
+WHUPythonProject/
+├── flask_app/
+│   ├── main.py              # 程序入口，负责 CORS 配置与蓝图注册
+│   ├── api/
+│   │   ├── routes.py        # 主路由模块，包含页面渲染与 AI 接口
+│   │   └── routes/
+│   │       └── notes.py     # 笔记管理 API (CRUD 逻辑)
+│   ├── services/
+│   │   └── ai_services.py   # AI 核心插件 (包含 AIPluginInterface 类)
+│   ├── static/              # 静态资源 (scripts.js, styles.css)
+│   └── templates/           # HTML 模板 (home.html, aichat.html)
+└── notes.json               # 笔记持久化存储文件
+
+### 4. 运行应用
+在终端执行启动命令：
+python main.py
+* 默认服务将运行在 http://localhost:8009
+* 打开浏览器访问首页，进入 AI 聊天室
+* 点击界面上的“设置”图标，输入您的 API Key 并选择对应的 Provider (如 DeepSeek 或 BigModel)
+
+### 5. 使用RAG功能
+* 在聊天界面勾选“搜索笔记”选项
+* 发送消息时，系统会自动从您的 notes.json 中检索相关内容提供给 AI 作为背景知识
+
+## 💡 技术难点与创新
+* 兼容性处理：通过基类 OpenAIPlugin 统一了不同厂商 API 的调用逻辑，支持动态适配 V1 或 V4 路径。
+* 单例模式：Notes 模块实例化为单例对象，确保系统运行时各模块访问的是同一份笔记数据。
+* 检索优化：在笔记的标题、内容和标签中执行字符串匹配，并返回相似度最高的 top_k 结果。
+
+## 🔮 未来展望
+* 语义检索：引入向量嵌入技术（Embeddings），将关键词匹配升级为更精确的语义搜索。
+* 多模态功能：集成图像识别技术，实现拍照识别并自动生成笔记。
