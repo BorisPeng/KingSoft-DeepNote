@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## 📝 项目简介
-**DeepNote** 是一款具备个人知识管理（PKM）能力和 AI 增强功能的智能笔记管理系统。本项目基于 **Flask** 框架开发，提供了一套完整的笔记数据管理 API，并利用现代大模型技术，赋予笔记系统“个人知识问答”能力。系统不仅支持基础的笔记 CRUD 操作，更集成了 **RAG（检索增强生成）** 机制，使用户能够基于个人笔记内容作为上下文，获得定制化的 AI 助手服务。
+**DeepNote** 是一款具备个人知识管理（PKM）能力和 AI 增强功能的智能笔记管理系统。本项目基于 **Flask** 框架开发，提供了一套完整的笔记数据管理 API，并利用现代大模型技术，赋予笔记系统"个人知识问答"能力。系统不仅支持基础的笔记 CRUD 操作，更集成了 **RAG（检索增强生成）** 机制，使用户能够基于个人笔记内容作为上下文，获得定制化的 AI 助手服务。
 
 ## ✨ 核心功能
 * **智能笔记管理 (CRUD)**：通过独立的 `note_bp` 蓝图提供 RESTful API，支持笔记的增删改查。
@@ -24,9 +24,9 @@
 ```bash
 # 进入项目目录
 pip install flask flask-cors requests
+```
 
 ### 3. 项目结构说明
-
 ```text
 WHUPythonProject/
 ├── flask_app/
@@ -40,16 +40,19 @@ WHUPythonProject/
 │   ├── static/              # 静态资源 (scripts.js, styles.css)
 │   └── templates/           # HTML 模板 (home.html, aichat.html)
 └── notes.json               # 笔记持久化存储文件
+```
 
 ### 4. 运行应用
 在终端执行启动命令：
+```bash
 python main.py
+```
 * 默认服务将运行在 http://localhost:8009
 * 打开浏览器访问首页，进入 AI 聊天室
-* 点击界面上的“设置”图标，输入您的 API Key 并选择对应的 Provider (如 DeepSeek 或 BigModel)
+* 点击界面上的"设置"图标，输入您的 API Key 并选择对应的 Provider (如 DeepSeek 或 BigModel)
 
 ### 5. 使用RAG功能
-* 在聊天界面勾选“搜索笔记”选项
+* 在聊天界面勾选"搜索笔记"选项
 * 发送消息时，系统会自动从您的 notes.json 中检索相关内容提供给 AI 作为背景知识
 
 ## 💡 技术难点与创新
